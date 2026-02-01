@@ -1,0 +1,209 @@
+{
+  config,
+  lib,
+  pkgs,
+  username,
+  ...
+}:
+
+let
+  cfg = config.modules.cli.starship;
+in
+{
+  options.modules.cli.starship = {
+    enable = lib.mkEnableOption "Starship prompt";
+    # New option to select the theme
+    palette = lib.mkOption {
+      type = lib.types.enum [
+        "kanso"
+        "tokyonight"
+        "gruvbox"
+        "kanagawa"
+        "catppuccin_mocha"
+        "darkplus"
+        "ayumirage"
+        "everforestdark"
+        "github_dark"
+      ];
+      default = "catppuccin_mocha";
+      description = "The color palette to use for Starship";
+    };
+  };
+
+  config = lib.mkIf cfg.enable {
+    home-manager.users.${username} = {
+      programs.starship = {
+        enable = true;
+        enableZshIntegration = true;
+        settings = {
+          # Use the selection from your host file
+          palette = cfg.palette;
+          add_newline = false;
+
+          format = lib.concatStrings [
+            "$character"
+            "$directory"
+            "$git_branch"
+            "$git_status"
+            "$python"
+            "$nodejs"
+            "$rust"
+            "$golang"
+          ];
+
+          character = {
+            success_symbol = "[➜](bold success)";
+            error_symbol = "[➜](bold error)";
+          };
+
+          directory = {
+            truncation_length = 1;
+            read_only = " 🔒";
+            style = "directory";
+          };
+
+          git_branch = {
+            symbol = "git";
+            format = "[$symbol:([$branch](branch))](symbol) ";
+          };
+
+          git_status.style = "status";
+
+          python = {
+            format = "[ $virtualenv ]($style) ";
+            style = "python";
+          };
+
+          nodejs = {
+            symbol = " ";
+            format = "[$symbol]($style) ";
+            style = "node";
+          };
+
+          rust = {
+            symbol = " ";
+            format = "[$symbol]($style) ";
+            style = "rust";
+          };
+
+          golang = {
+            symbol = " ";
+            format = "[$symbol]($style) ";
+            style = "go";
+          };
+
+          palettes = {
+            kanso = {
+              error = "#c4746e";
+              success = "#8a9a7b";
+              directory = "#7FB4CA";
+              branch = "#E46876";
+              symbol = "#8ba4b0";
+              status = "#938AA9";
+              python = "#C4B28A";
+              node = "#8ea4a2";
+              rust = "#A292A3";
+              go = "#7AA89F";
+            };
+            tokyonight = {
+              error = "#f7768e";
+              success = "#9ece6a";
+              directory = "#2ac3de";
+              branch = "#f7768e";
+              symbol = "#7dcfff";
+              status = "#9d7cd8";
+              python = "#565f89";
+              node = "#73daca";
+              rust = "#ff9e64";
+              go = "#7aa2f7";
+            };
+            gruvbox = {
+              error = "#fb4934";
+              success = "#b8bb26";
+              directory = "#73daca";
+              branch = "#fb4934";
+              symbol = "#83a598";
+              status = "#928374";
+              python = "#fabd2f";
+              node = "#83a598";
+              rust = "#fe8019";
+              go = "#83a598";
+            };
+            kanagawa = {
+              error = "#E46876";
+              success = "#98BB6C";
+              directory = "#7FB4CA";
+              branch = "#E46876";
+              symbol = "#7FB4CA";
+              status = "#54546D";
+              python = "#DCA561";
+              node = "#98BB6C";
+              rust = "#DCA561";
+              go = "#7FB4CA";
+            };
+            catppuccin_mocha = {
+              error = "#F38BA8";
+              success = "#A6E3A1";
+              directory = "#89B4FA";
+              branch = "#F38BA8";
+              symbol = "#89B4FA";
+              status = "#9399B2";
+              python = "#F9E2AF";
+              node = "#A6E3A1";
+              rust = "#F9E2AF";
+              go = "#89B4FA";
+            };
+            darkplus = {
+              error = "#ff1212";
+              success = "#4EC9B0";
+              directory = "#569CD6";
+              branch = "#FF6B6B";
+              symbol = "#4EC9B0";
+              status = "#C586C0";
+              python = "#DCDCAA";
+              go = "#9CDCFE";
+              node = "#4EC9B0";
+              rust = "#4EC9B0";
+            };
+            ayumirage = {
+              error = "#f28779";
+              success = "#D5FF80";
+              directory = "#FAD07B";
+              branch = "#f28779";
+              symbol = "#73D0FF";
+              status = "#DFBFFF";
+              python = "#DCDCAA";
+              go = "#9CDCFE";
+              node = "#4EC9B0";
+              rust = "#4EC9B0";
+            };
+            everforestdark = {
+              error = "#E67E81";
+              success = "#7EB98C";
+              directory = "#DBBC7F";
+              branch = "#E67E81";
+              symbol = "#7FBBB3";
+              status = "#D699B6";
+              python = "#DBBC7F";
+              node = "#7EB98C";
+              rust = "#D699B6";
+              go = "#7FBBB3";
+            };
+            github_dark = {
+              error = "#F25D5D";
+              success = "#62D863";
+              directory = "#8AB6D6";
+              branch = "#F25D5D";
+              symbol = "#8AB6D6";
+              status = "#6C6C6C";
+              python = "#FFD700";
+              node = "#80B6F4";
+              rust = "#D77B7B";
+              go = "#3E8EDE";
+            };
+          };
+        };
+      };
+    };
+  };
+}

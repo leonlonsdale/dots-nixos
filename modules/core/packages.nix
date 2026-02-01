@@ -6,7 +6,6 @@
     bat
     eza
     gh
-    starship
     yazi
     zellij
     fastfetch

@@ -78,12 +78,9 @@ in
       };
 
       modules = [
-        inputs.nixpkgs.nixosModules.readOnlyPkgs
         inputs.home-manager.nixosModules.home-manager
-
         systemCore
         homeManagerConfig
-
         (self + "/hosts/${hostname}.nix")
       ];
     }

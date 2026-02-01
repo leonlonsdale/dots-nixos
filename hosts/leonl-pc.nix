@@ -7,9 +7,10 @@
 
   modules = {
     shell.zsh.enable = true;
-    dev = {
-      cli.git.enable = true;
-      editors.helix.enable = true;
-    };
+    cli.starship.enable = true;
+    cli.starship.palette = "catppuccin_mocha";
+
+    dev.cli.git.enable = true;
+    dev.editors.helix.enable = true;
   };
 }
