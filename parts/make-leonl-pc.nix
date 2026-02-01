@@ -8,7 +8,6 @@ let
   username = "leonl";
   hostname = "leonl-pc";
   stateVersion = "25.11";
-  # Add these back here so they can be passed down
   gitName = "Leon Lonsdale";
   gitEmail = "coding@leonlonsdale.dev";
 
@@ -40,7 +39,6 @@ let
       home-manager = {
         useGlobalPkgs = true;
         useUserPackages = true;
-        # Pass them into Home Manager modules too
         extraSpecialArgs = {
           inherit
             inputs
@@ -66,7 +64,6 @@ in
   flake.nixosConfigurations.${hostname} = withSystem "x86_64-linux" (
     { pkgs, ... }:
     inputs.nixpkgs.lib.nixosSystem {
-      # Add gitName and gitEmail to specialArgs here!
       specialArgs = {
         inherit
           self

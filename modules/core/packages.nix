@@ -5,7 +5,6 @@
     ghostty
     bat
     eza
-    helix
     gh
     starship
     yazi
