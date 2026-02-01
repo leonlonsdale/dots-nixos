@@ -1,15 +1,94 @@
-{ self, inputs, ... }:
+{
+  self,
+  inputs,
+  withSystem,
+  ...
+}:
 let
   username = "leonl";
   hostname = "leonl-pc";
   stateVersion = "25.11";
+  # Add these back here so they can be passed down
   gitName = "Leon Lonsdale";
   gitEmail = "coding@leonlonsdale.dev";
+
+  systemCore =
+    { pkgs, ... }:
+    {
+      nixpkgs.pkgs = pkgs;
+      system.stateVersion = stateVersion;
+      networking.hostName = hostname;
+      nix.settings.experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+
+      users.users.${username} = {
+        isNormalUser = true;
+        extraGroups = [
+          "networkmanager"
+          "wheel"
+        ];
+        shell = pkgs.zsh;
+        home = "/home/${username}";
+      };
+    };
+
+  homeManagerConfig =
+    { pkgs, ... }:
+    {
+      home-manager = {
+        useGlobalPkgs = true;
+        useUserPackages = true;
+        # Pass them into Home Manager modules too
+        extraSpecialArgs = {
+          inherit
+            inputs
+            self
+            username
+            pkgs
+            gitName
+            gitEmail
+            ;
+        };
+        backupFileExtension = "backup";
+        overwriteBackup = true;
+
+        users.${username} = {
+          home.username = username;
+          home.homeDirectory = "/home/${username}";
+          home.stateVersion = stateVersion;
+        };
+      };
+    };
 in
 {
-  flake.nixosConfigurations.leonl-pc = inputs.nixpkgs.lib.nixosSystem {
-    system = "x86_64-linux";
-    specialArgs = { inherit self inputs hostname username stateVersion gitName gitEmail; };
-    modules = [ (self + "/hosts/leonl-pc.nix") ];
-  };
+  flake.nixosConfigurations.${hostname} = withSystem "x86_64-linux" (
+    { pkgs, ... }:
+    inputs.nixpkgs.lib.nixosSystem {
+      # Add gitName and gitEmail to specialArgs here!
+      specialArgs = {
+        inherit
+          self
+          inputs
+          pkgs
+          hostname
+          username
+          stateVersion
+          gitName
+          gitEmail
+          ;
+      };
+
+      modules = [
+        inputs.nixpkgs.nixosModules.readOnlyPkgs
+        inputs.home-manager.nixosModules.home-manager
+
+        systemCore
+        homeManagerConfig
+
+        (self + "/hosts/${hostname}.nix")
+      ];
+    }
+  );
 }
