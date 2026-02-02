@@ -23,7 +23,7 @@ in
         defaultEditor = true;
 
         settings = {
-          theme = "catppuccin_mocha";
+          theme = "tokyonight_storm";
           editor = {
             true-color = true;
             undercurl = true;

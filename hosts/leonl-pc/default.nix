@@ -27,7 +27,9 @@
     shell.zsh.enable = true;
 
     cli.starship.enable = true;
-    cli.starship.palette = "catppuccin_mocha";
+    cli.starship.palette = "tokyonight";
+    cli.btop.enable = true;
+    cli.btop.theme = "tokyo-night";
 
     dev.cli.git.enable = true;
     dev.editors.helix.enable = true;
@@ -38,7 +40,7 @@
     # terminals.ghostty.font = "hurmit";
     terminals.kitty.enable = true;
     terminals.kitty.setAsDefault = true;
-    terminals.kitty.theme = "Catppuccin-Mocha";
+    terminals.kitty.theme = "tokyo_night_storm";
     terminals.kitty.font = "hurmit";
   };
 }
