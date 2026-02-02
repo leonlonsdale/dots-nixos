@@ -63,6 +63,7 @@
 
     ##### Applications
 
-    programs.firefox.enable = true;
+    programs.browsers.firefox.enable = true;
+    programs.productivity.obsidian.enable = true;
   };
 }
