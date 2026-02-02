@@ -18,12 +18,11 @@ in
     home-manager.users.${username} = {
       programs.helix = {
         enable = true;
-        # Uses the master/flake version provided by the overlay
         package = pkgs.helix;
         defaultEditor = true;
 
         settings = {
-          theme = "tokyonight_storm";
+          # theme = "tokyonight_storm";
           editor = {
             true-color = true;
             undercurl = true;

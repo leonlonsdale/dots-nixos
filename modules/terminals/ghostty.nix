@@ -29,11 +29,11 @@ in
       description = "Set Ghostty as the default terminal emulator.";
     };
 
-    theme = lib.mkOption {
-      type = lib.types.str;
-      default = "Catppuccin Mocha";
-      description = "The Ghostty theme to use.";
-    };
+    # theme = lib.mkOption {
+    #   type = lib.types.str;
+    #   default = "Catppuccin Mocha";
+    #   description = "The Ghostty theme to use.";
+    # };
   };
 
   config = lib.mkIf cfg.enable {
@@ -58,7 +58,7 @@ in
         settings = {
           font-family = if cfg.font == "monospace" then "monospace" else fnt.${cfg.font}.prettyName;
           font-size = 12;
-          theme = cfg.theme;
+          # theme = cfg.theme;
           window-decoration = false;
           unfocused-split-opacity = 0.1;
           window-padding-x = 15;

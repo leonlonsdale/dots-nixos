@@ -17,6 +17,9 @@
 
   modules = {
     ##### Appearance
+    appearance.theme.catppuccin.enable = true;
+    appearance.theme.catppuccin.flavor = "mocha";
+    appearance.theme.catppuccin.accent = "mauve";
     appearance.fonts.hurmit.enable = true;
     appearance.fonts.jetbrains.enable = true;
     appearance.fonts.victor.enable = true;
@@ -25,9 +28,9 @@
     shell.zsh.enable = true;
 
     cli.starship.enable = true;
-    cli.starship.palette = "tokyonight";
+    # cli.starship.palette = "tokyonight";
     cli.btop.enable = true;
-    cli.btop.theme = "tokyo-night";
+    # cli.btop.theme = "tokyo-night";
     cli.bat.enable = true;
     cli.eza.enable = true;
     cli.fd.enable = true;
@@ -40,6 +43,7 @@
     ##### Dev
     dev.cli.git.enable = true;
     dev.cli.gh.enable = true;
+    dev.cli.lazygit.enable = true;
     dev.editors.helix.enable = true;
     dev.languages.go.enable = true;
     dev.languages.python.enable = true;
@@ -54,7 +58,11 @@
     ##### Terminal
     terminals.foot.enable = true;
     terminals.foot.setAsDefault = true;
-    terminals.foot.theme = "tokyonight-storm";
+    # terminals.foot.theme = "tokyonight-storm";
     terminals.foot.font = "hurmit";
+
+    ##### Applications
+
+    programs.firefox.enable = true;
   };
 }

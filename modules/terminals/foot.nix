@@ -14,10 +14,10 @@ in
   options.modules.terminals.foot = {
     enable = lib.mkEnableOption "foot terminal";
     setAsDefault = lib.mkEnableOption "set foot as default terminal";
-    theme = lib.mkOption {
-      type = lib.types.str;
-      default = "tokyonight-storm";
-    };
+    # theme = lib.mkOption {
+    #   type = lib.types.str;
+    #   default = "tokyonight-storm";
+    # };
     font = lib.mkOption {
       type = lib.types.str;
       default = "monospace";
@@ -38,7 +38,7 @@ in
             term = "xterm-256color";
             font = "${if cfg.font == "monospace" then "monospace" else fnt.${cfg.font}.prettyName}:size=11";
             dpi-aware = "yes";
-            include = "${pkgs.foot.themes}/share/foot/themes/${cfg.theme}";
+            # include = "${pkgs.foot.themes}/share/foot/themes/${cfg.theme}";
             pad = "15x15";
           };
 

@@ -1,7 +1,6 @@
 {
   inputs,
   self,
-  pkgs,
   username,
   stateVersion,
   gitName,
@@ -9,7 +8,9 @@
   ...
 }:
 {
-  imports = [ inputs.home-manager.nixosModules.home-manager ];
+  imports = [
+    inputs.home-manager.nixosModules.home-manager
+  ];
 
   home-manager = {
     useGlobalPkgs = true;
@@ -23,6 +24,7 @@
         gitEmail
         ;
     };
+
     backupFileExtension = "backup";
     overwriteBackup = true;
     users.${username} = {

@@ -27,11 +27,11 @@ in
       default = false;
     };
 
-    theme = lib.mkOption {
-      type = lib.types.str;
-      default = "Catppuccin-Mocha";
-      description = "The Kitty theme to use.";
-    };
+    # theme = lib.mkOption {
+    #   type = lib.types.str;
+    #   default = "Catppuccin-Mocha";
+    #   description = "The Kitty theme to use.";
+    # };
   };
 
   config = lib.mkIf cfg.enable {
@@ -48,7 +48,7 @@ in
 
     home-manager.users.${username}.programs.kitty = {
       enable = true;
-      themeFile = cfg.theme;
+      # themeFile = cfg.theme;
       font = {
         name = if cfg.font == "monospace" then "monospace" else fnt.${cfg.font}.prettyName;
         size = 11;
