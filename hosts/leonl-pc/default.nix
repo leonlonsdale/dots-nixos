@@ -16,14 +16,12 @@
   system.stateVersion = stateVersion;
 
   modules = {
-    appearance = {
-      fonts = {
-        hurmit.enable = true;
-        jetbrains.enable = true;
-        victor.enable = true;
-      };
-    };
+    ##### Appearance
+    appearance.fonts.hurmit.enable = true;
+    appearance.fonts.jetbrains.enable = true;
+    appearance.fonts.victor.enable = true;
 
+    ##### Shell & CLI
     shell.zsh.enable = true;
 
     cli.starship.enable = true;
@@ -31,16 +29,14 @@
     cli.btop.enable = true;
     cli.btop.theme = "tokyo-night";
 
+    ##### Dev
     dev.cli.git.enable = true;
     dev.editors.helix.enable = true;
 
-    # terminals.ghostty.enable = true;
-    # terminals.ghostty.setAsDefault = true;
-    # terminals.ghostty.theme = "Catppuccin Mocha";
-    # terminals.ghostty.font = "hurmit";
-    terminals.kitty.enable = true;
-    terminals.kitty.setAsDefault = true;
-    terminals.kitty.theme = "tokyo_night_storm";
-    terminals.kitty.font = "hurmit";
+    ##### Terminal
+    terminals.foot.enable = true;
+    terminals.foot.setAsDefault = true;
+    terminals.foot.theme = "tokyonight-storm";
+    terminals.foot.font = "hurmit";
   };
 }
