@@ -32,9 +32,13 @@
     dev.cli.git.enable = true;
     dev.editors.helix.enable = true;
 
-    terminals.ghostty.enable = true;
-    terminals.ghostty.setAsDefault = true;
-    terminals.ghostty.theme = "Catppuccin Mocha";
-    terminals.ghostty.font = "hurmit";
+    # terminals.ghostty.enable = true;
+    # terminals.ghostty.setAsDefault = true;
+    # terminals.ghostty.theme = "Catppuccin Mocha";
+    # terminals.ghostty.font = "hurmit";
+    terminals.kitty.enable = true;
+    terminals.kitty.setAsDefault = true;
+    terminals.kitty.theme = "Catppuccin-Mocha";
+    terminals.kitty.font = "hurmit";
   };
 }
