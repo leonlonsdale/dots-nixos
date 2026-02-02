@@ -16,7 +16,16 @@
   system.stateVersion = stateVersion;
 
   modules = {
+    appearance = {
+      fonts = {
+        hurmit.enable = true;
+        jetbrains.enable = true;
+        victor.enable = true;
+      };
+    };
+
     shell.zsh.enable = true;
+
     cli.starship.enable = true;
     cli.starship.palette = "catppuccin_mocha";
 
@@ -26,5 +35,6 @@
     terminals.ghostty.enable = true;
     terminals.ghostty.setAsDefault = true;
     terminals.ghostty.theme = "Catppuccin Mocha";
+    terminals.ghostty.font = "hurmit";
   };
 }
