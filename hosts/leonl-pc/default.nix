@@ -1,9 +1,19 @@
-{ self, ... }:
+{
+  self,
+  stateVersion,
+  hostname,
+  ...
+}:
 {
   imports = [
     /etc/nixos/hardware-configuration.nix
     (self + "/modules")
+    ./user.nix
+    ./home.nix
   ];
+
+  networking.hostName = hostname;
+  system.stateVersion = stateVersion;
 
   modules = {
     shell.zsh.enable = true;

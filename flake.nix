@@ -16,23 +16,32 @@
     helix.url = "github:helix-editor/helix";
     rust-overlay.url = "github:oxalica/rust-overlay";
   };
-  outputs = inputs@{ self, flake-parts, ... }: 
+  outputs =
+    inputs@{ self, flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" ];
-      imports = [ ./parts/make-leonl-pc.nix ];
-      perSystem = { system, ... }: {
-        _module.args.pkgs = import inputs.nixpkgs {
-          inherit system;
-          overlays = [
-            inputs.rust-overlay.overlays.default
-            (final: prev: let 
-              fromFlake = pkg: pkg.packages.${system}.default; 
-            in {
-              helix = fromFlake inputs.helix;
-            })
-          ];
-          config.allowUnfree = true;
+
+      imports = [ ./parts/nixos.nix ];
+
+      perSystem =
+        { system, ... }:
+        {
+          _module.args.pkgs = import inputs.nixpkgs {
+            inherit system;
+            overlays = [
+              inputs.rust-overlay.overlays.default
+              (
+                final: prev:
+                let
+                  fromFlake = pkg: pkg.packages.${system}.default;
+                in
+                {
+                  helix = fromFlake inputs.helix;
+                }
+              )
+            ];
+            config.allowUnfree = true;
+          };
         };
-      };
     };
 }
