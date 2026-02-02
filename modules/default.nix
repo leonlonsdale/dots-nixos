@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ lib, username, ... }:
 let
   scanPaths =
     dir:
@@ -18,5 +18,6 @@ let
     );
 in
 {
+  hjem.users.${username}.systemd.enable = false;
   imports = scanPaths ./.;
 }

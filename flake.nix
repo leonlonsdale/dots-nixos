@@ -16,6 +16,14 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     helix.url = "github:helix-editor/helix";
     rust-overlay.url = "github:oxalica/rust-overlay";
+    hjem.url = "github:feel-co/hjem";
+    hjem.inputs.nixpkgs.follows = "nixpkgs";
+    niri.url = "github:sodiboo/niri-flake";
+    niri.inputs.nixpkgs.follows = "nixpkgs";
+    dms.url = "github:AvengeMedia/DankMaterialShell/stable";
+    dms.inputs.nixpkgs.follows = "nixpkgs";
+    wallpaper.url = "github:leonlonsdale/wallpaper";
+    wallpaper.flake = false;
   };
   outputs =
     inputs@{ self, flake-parts, ... }:

@@ -23,6 +23,11 @@
     appearance.fonts.hurmit.enable = true;
     appearance.fonts.jetbrains.enable = true;
     appearance.fonts.victor.enable = true;
+    appearance.desktops.niri.enable = true;
+    appearance.ui.dms.enable = true;
+    appearance.ui.dms.greeter.enable = true;
+    # appearance.desktops.kdeplasma.enable = true;
+    appearance.wallpapers.personal-walls.enable = true;
 
     ##### Shell & CLI
     shell.zsh.enable = true;

@@ -25,6 +25,7 @@ let
         modules = [
           { nixpkgs.pkgs = pkgs; }
           inputs.catppuccin.nixosModules.catppuccin
+          inputs.hjem.nixosModules.default
           inputs.home-manager.nixosModules.home-manager
           (self + "/hosts/${hostname}")
         ];
