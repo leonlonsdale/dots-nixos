@@ -22,5 +22,9 @@
 
     dev.cli.git.enable = true;
     dev.editors.helix.enable = true;
+
+    terminals.ghostty.enable = true;
+    terminals.ghostty.setAsDefault = true;
+    terminals.ghostty.theme = "Catppuccin Mocha";
   };
 }

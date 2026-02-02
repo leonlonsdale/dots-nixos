@@ -1,4 +1,10 @@
-{ config, pkgs, lib, username, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  username,
+  ...
+}:
 let
   cfg = config.modules.shell.zsh;
 in
@@ -6,7 +12,7 @@ in
   options.modules.shell.zsh = {
     enable = lib.mkEnableOption "Enable zsh at system level with home config";
   };
-  
+
   config = lib.mkIf cfg.enable {
     programs.zsh.enable = true;
 
@@ -27,15 +33,11 @@ in
           cat = "bat";
           cd = "z";
           man = "tldr";
+          cl = "clear";
         };
       };
 
       programs.zoxide = {
-        enable = true;
-        enableZshIntegration = true;
-      };
-
-      programs.starship = {
         enable = true;
         enableZshIntegration = true;
       };

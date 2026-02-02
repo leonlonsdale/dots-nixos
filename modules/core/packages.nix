@@ -2,7 +2,6 @@
 {
   environment.systemPackages = with pkgs; [
     vim
-    ghostty
     bat
     eza
     gh
