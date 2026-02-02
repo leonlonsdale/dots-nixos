@@ -1,14 +1,9 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
+    wget
+    curl
     vim
-    bat
-    eza
     gh
-    yazi
-    zellij
-    fastfetch
-    ripgrep
-    tealdeer
   ];
 }

@@ -28,9 +28,18 @@
     cli.starship.palette = "tokyonight";
     cli.btop.enable = true;
     cli.btop.theme = "tokyo-night";
+    cli.bat.enable = true;
+    cli.eza.enable = true;
+    cli.fd.enable = true;
+    cli.fzf.enable = true;
+    cli.jq.enable = true;
+    cli.ripgrep.enable = true;
+    cli.yazi.enable = true;
+    cli.zellij.enable = true;
 
     ##### Dev
     dev.cli.git.enable = true;
+    dev.cli.gh.enable = true;
     dev.editors.helix.enable = true;
     dev.languages.go.enable = true;
     dev.languages.python.enable = true;
