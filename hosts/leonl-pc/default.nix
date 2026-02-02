@@ -32,6 +32,15 @@
     ##### Dev
     dev.cli.git.enable = true;
     dev.editors.helix.enable = true;
+    dev.languages.go.enable = true;
+    dev.languages.python.enable = true;
+    dev.languages.web.enable = true;
+    dev.languages.sql.enable = true;
+    dev.languages.lua.enable = true;
+    dev.languages.markdown.enable = true;
+    dev.languages.toml.enable = true;
+    dev.languages.yaml.enable = true;
+    dev.languages.nix.enable = true;
 
     ##### Terminal
     terminals.foot.enable = true;
