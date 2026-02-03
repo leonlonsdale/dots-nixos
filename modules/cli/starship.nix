@@ -5,14 +5,16 @@
   username,
   ...
 }:
-
 let
   cfg = config.modules.cli.starship;
+
+  zshEnabled = config.modules.shell.zsh.enable or false;
+  fishEnabled = config.modules.shell.fish.enable or false;
+  bashEnabled = config.modules.shell.bash.enable or false;
 in
 {
   options.modules.cli.starship = {
     enable = lib.mkEnableOption "Starship prompt";
-    # New option to select the theme
     palette = lib.mkOption {
       type = lib.types.enum [
         "kanso"
@@ -26,7 +28,7 @@ in
         "github_dark"
       ];
       default = "catppuccin_mocha";
-      description = "The color palette to use for Starship";
+      description = "The colour palette to use for Starship";
     };
   };
 
@@ -36,9 +38,12 @@ in
     home-manager.users.${username} = {
       programs.starship = {
         enable = true;
-        enableZshIntegration = true;
+
+        enableZshIntegration = zshEnabled;
+        enableFishIntegration = fishEnabled;
+        enableBashIntegration = bashEnabled;
+
         settings = {
-          # Use the selection from your host file
           palette = cfg.palette;
           add_newline = false;
 

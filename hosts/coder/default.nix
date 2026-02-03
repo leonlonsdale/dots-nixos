@@ -48,7 +48,8 @@
   modules.appearance.wallpapers.personal-walls.enable = true;
 
   ##### Shell & CLI
-  modules.shell.zsh.enable = true;
+  modules.shell.zsh.enable = false;
+  modules.shell.fish.enable = true;
   modules.cli.zoxide.enable = true;
   modules.cli.starship.enable = true;
   # modules.cli.starship.palette = "tokyonight";
