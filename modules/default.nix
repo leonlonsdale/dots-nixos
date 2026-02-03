@@ -18,6 +18,7 @@ let
     );
 in
 {
+  # hjem and hm collide on systemd.
   hjem.users.${username}.systemd.enable = false;
   imports = scanPaths ./.;
 }

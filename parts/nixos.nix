@@ -36,6 +36,7 @@ in
   flake.nixosConfigurations = {
 
     # mkConfig "hostname" "stateVersion" "username" "gitName" "gitEmail"
-    leonl-pc = mkConfig "leonl-pc" "25.11" "leonl" "Leon Lonsdale" "coding@leonlonsdale.dev";
+    coder = mkConfig "coder" "25.11" "leonl" "Leon Lonsdale" "coding@leonlonsdale.dev";
+    gamer = mkConfig "gamer" "25.11" "leonl";
   };
 }

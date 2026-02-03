@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  pkgs,
   username,
   ...
 }:
@@ -51,7 +50,7 @@ in
       # themeFile = cfg.theme;
       font = {
         name = if cfg.font == "monospace" then "monospace" else fnt.${cfg.font}.prettyName;
-        size = 11;
+        size = 12;
       };
       settings = {
         scrollback_lines = 3000;

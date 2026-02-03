@@ -26,7 +26,7 @@
     appearance.desktops.niri.enable = true;
     appearance.ui.dms.enable = true;
     appearance.ui.dms.greeter.enable = true;
-    # appearance.desktops.kdeplasma.enable = true;
+    appearance.ui.icons.qt.enable = true;
     appearance.wallpapers.personal-walls.enable = true;
 
     ##### Shell & CLI
@@ -61,10 +61,10 @@
     dev.languages.nix.enable = true;
 
     ##### Terminal
-    terminals.foot.enable = true;
-    terminals.foot.setAsDefault = true;
-    # terminals.foot.theme = "tokyonight-storm";
-    terminals.foot.font = "hurmit";
+    terminals.kitty.enable = true;
+    terminals.kitty.setAsDefault = true;
+    # terminals.kitty.theme = "tokyonight-storm";
+    terminals.kitty.font = "jetbrains";
 
     ##### Applications
 
