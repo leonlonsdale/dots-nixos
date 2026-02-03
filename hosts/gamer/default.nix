@@ -44,16 +44,18 @@
   modules.appearance.desktops.kdeplasma.enable = true;
   modules.appearance.wallpapers.personal-walls.enable = true;
 
+  ##### Gaming
+  modules.gaming.steam.enable = true;
+
   ##### Shell & CLI
   modules.shell.zsh.enable = true;
   modules.cli.starship.enable = true;
   modules.cli.yazi.enable = true;
 
   ##### Terminal
-  modules.terminals.kitty.enable = true;
-  modules.terminals.kitty.setAsDefault = true;
-  # modules.terminals.kitty.theme = "tokyonight-storm";
-  modules.terminals.kitty.font = "jetbrains";
+  modules.terminals.foot.enable = true;
+  modules.terminals.foot.setAsDefault = true;
+  modules.terminals.foot.font = "jetbrains";
 
   ##### Applications
   modules.programs.browsers.firefox.enable = true;
