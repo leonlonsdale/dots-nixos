@@ -38,175 +38,266 @@ in
     home-manager.users.${username} = {
       programs.starship = {
         enable = true;
-
         enableZshIntegration = zshEnabled;
         enableFishIntegration = fishEnabled;
         enableBashIntegration = bashEnabled;
 
-        settings = {
+        settings = lib.mkForce {
           palette = cfg.palette;
-          add_newline = false;
+          add_newline = true;
 
+          # LINE 1: The White Pill (Email + Git)
+          # LINE 2: Directory + Languages
           format = lib.concatStrings [
-            "$character"
-            "$directory"
+            "[](white)"
+            "\${custom.git_config_email}"
             "$git_branch"
-            "$git_status"
+            "[](white)"
+            "$line_break"
+            "$directory"
             "$python"
             "$nodejs"
             "$rust"
             "$golang"
+            "$lua"
+            "$php"
+            "$java"
+            "$kotlin"
+            "$haskell"
+            "$elixir"
+            "$elm"
+            "$ruby"
+            "$perl"
+            "$c"
+            "$cpp"
+            "$cmake"
+            "$zig"
+            "$nim"
+            "$dart"
+            "$swift"
+            "$docker_context"
+            "$terraform"
+            "$nix_shell"
+            "$package"
+            "$line_break"
+            "$git_status"
+            "$character"
           ];
 
-          character = {
-            success_symbol = "[➜](bold success)";
-            error_symbol = "[➜](bold error)";
+          custom.git_config_email = {
+            command = "git config user.email";
+            format = "[ $output](bg:white fg:0 bold)";
+            when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1";
+          };
+
+          git_branch = {
+            symbol = "󰊢 ";
+            style = "bg:white fg:0 bold";
+            format = "[[ on ](bg:white fg:8)$symbol$branch]($style)";
+          };
+
+          git_status = {
+            style = "bg:white";
+            format = "[([$all_status$ahead_behind](fg:0))]($style) ";
+            conflicted = "[!]](fg:red)";
+            untracked = "[?]](fg:red)";
+            modified = "[!]](fg:red)";
+            deleted = "[x]](fg:red)";
+            staged = "[+](fg:208)";
+            renamed = "[»](fg:208)";
+            ahead = "[⇡](fg:blue)";
+            behind = "[⇣](fg:blue)";
+            stashed = "[S](fg:blue)";
           };
 
           directory = {
             truncation_length = 1;
             read_only = " 🔒";
-            style = "directory";
+            style = "blue";
+            format = "[in ](green)[󰝰 $path]($style)[$read_only]($read_only_style) ";
           };
 
-          git_branch = {
-            symbol = "git";
-            format = "[$symbol:([$branch](branch))](symbol) ";
-          };
-
-          git_status.style = "status";
-
+          # Language Modules with Official Brand Colors
           python = {
-            format = "[ $virtualenv ]($style) ";
-            style = "python";
+            symbol = " ";
+            format = "[$symbol($version)]($style) ";
+            style = "bold #3776AB";
           };
-
           nodejs = {
             symbol = " ";
-            format = "[$symbol]($style) ";
-            style = "node";
+            format = "[$symbol($version)]($style) ";
+            style = "bold #339933";
           };
-
           rust = {
             symbol = " ";
-            format = "[$symbol]($style) ";
-            style = "rust";
+            format = "[$symbol($version)]($style) ";
+            style = "bold #CE412B";
           };
-
           golang = {
             symbol = " ";
-            format = "[$symbol]($style) ";
-            style = "go";
+            format = "[$symbol($version)]($style) ";
+            style = "bold #00ADD8";
+          };
+          lua = {
+            symbol = " ";
+            format = "[$symbol($version)]($style) ";
+            style = "bold #000080";
+          };
+          php = {
+            symbol = " ";
+            format = "[$symbol($version)]($style) ";
+            style = "bold #777BB4";
+          };
+          java = {
+            symbol = " ";
+            format = "[$symbol($version)]($style) ";
+            style = "bold #ED8B00";
+          };
+          kotlin = {
+            symbol = "󱈙 ";
+            format = "[$symbol($version)]($style) ";
+            style = "bold #7F52FF";
+          };
+          haskell = {
+            symbol = " ";
+            format = "[$symbol($version)]($style) ";
+            style = "bold #5D4F85";
+          };
+          elixir = {
+            symbol = " ";
+            format = "[$symbol($version)]($style) ";
+            style = "bold #4E2A8E";
+          };
+          elm = {
+            symbol = " ";
+            format = "[$symbol($version)]($style) ";
+            style = "bold #60B5CC";
+          };
+          ruby = {
+            symbol = " ";
+            format = "[$symbol($version)]($style) ";
+            style = "bold #CC342D";
+          };
+          perl = {
+            symbol = " ";
+            format = "[$symbol($version)]($style) ";
+            style = "bold #39457E";
+          };
+          c = {
+            symbol = " ";
+            format = "[$symbol($version)]($style) ";
+            style = "bold #A8B9CC";
+          };
+          cpp = {
+            symbol = " ";
+            format = "[$symbol($version)]($style) ";
+            style = "bold #00599C";
+          };
+          cmake = {
+            symbol = "󰔊 ";
+            format = "[$symbol($version)]($style) ";
+            style = "bold #064F8C";
+          };
+          zig = {
+            symbol = " ";
+            format = "[$symbol($version)]($style) ";
+            style = "bold #F7A41D";
+          };
+          nim = {
+            symbol = " ";
+            format = "[$symbol($version)]($style) ";
+            style = "bold #FFE953";
+          };
+          dart = {
+            symbol = " ";
+            format = "[$symbol($version)]($style) ";
+            style = "bold #0175C2";
+          };
+          swift = {
+            symbol = " ";
+            format = "[$symbol($version)]($style) ";
+            style = "bold #F05138";
+          };
+          docker_context = {
+            symbol = "󰡨 ";
+            format = "[$symbol($context)]($style) ";
+            style = "bold #2496ED";
+          };
+          terraform = {
+            symbol = "󱁢 ";
+            format = "[$symbol($version)]($style) ";
+            style = "bold #844FBA";
+          };
+          nix_shell = {
+            symbol = " ";
+            format = "[$symbol($state)]($style) ";
+            style = "bold #7EBAE4";
+          };
+          package = {
+            symbol = "󰏗 ";
+            format = "[$symbol($version)]($style) ";
+            style = "bold #F2BF26";
+          };
+
+          character = {
+            success_symbol = "[➜](bold green)";
+            error_symbol = "[➜](bold red)";
           };
 
           palettes = {
             kanso = {
-              error = "#c4746e";
-              success = "#8a9a7b";
-              directory = "#7FB4CA";
-              branch = "#E46876";
-              symbol = "#8ba4b0";
-              status = "#938AA9";
-              python = "#C4B28A";
-              node = "#8ea4a2";
-              rust = "#A292A3";
-              go = "#7AA89F";
+              red = "#c4746e";
+              green = "#8a9a7b";
+              blue = "#7FB4CA";
+              orange = "#E69875";
             };
             tokyonight = {
-              error = "#f7768e";
-              success = "#9ece6a";
-              directory = "#2ac3de";
-              branch = "#f7768e";
-              symbol = "#7dcfff";
-              status = "#9d7cd8";
-              python = "#565f89";
-              node = "#73daca";
-              rust = "#ff9e64";
-              go = "#7aa2f7";
+              red = "#f7768e";
+              green = "#9ece6a";
+              blue = "#7aa2f7";
+              orange = "#ff9e64";
             };
             gruvbox = {
-              error = "#fb4934";
-              success = "#b8bb26";
-              directory = "#73daca";
-              branch = "#fb4934";
-              symbol = "#83a598";
-              status = "#928374";
-              python = "#fabd2f";
-              node = "#83a598";
-              rust = "#fe8019";
-              go = "#83a598";
+              red = "#fb4934";
+              green = "#b8bb26";
+              blue = "#83a598";
+              orange = "#fe8019";
             };
             kanagawa = {
-              error = "#E46876";
-              success = "#98BB6C";
-              directory = "#7FB4CA";
-              branch = "#E46876";
-              symbol = "#7FB4CA";
-              status = "#54546D";
-              python = "#DCA561";
-              node = "#98BB6C";
-              rust = "#DCA561";
-              go = "#7FB4CA";
+              red = "#E46876";
+              green = "#98BB6C";
+              blue = "#7FB4CA";
+              orange = "#FFA066";
             };
             catppuccin_mocha = {
-              error = "#F38BA8";
-              success = "#A6E3A1";
-              directory = "#89B4FA";
-              branch = "#F38BA8";
-              symbol = "#89B4FA";
-              status = "#9399B2";
-              python = "#F9E2AF";
-              node = "#A6E3A1";
-              rust = "#F9E2AF";
-              go = "#89B4FA";
+              red = "#F38BA8";
+              green = "#A6E3A1";
+              blue = "#89B4FA";
+              orange = "#FAB387";
             };
             darkplus = {
-              error = "#ff1212";
-              success = "#4EC9B0";
-              directory = "#569CD6";
-              branch = "#FF6B6B";
-              symbol = "#4EC9B0";
-              status = "#C586C0";
-              python = "#DCDCAA";
-              go = "#9CDCFE";
-              node = "#4EC9B0";
-              rust = "#4EC9B0";
+              red = "#ff1212";
+              green = "#4EC9B0";
+              blue = "#569CD6";
+              orange = "#CE9178";
             };
             ayumirage = {
-              error = "#f28779";
-              success = "#D5FF80";
-              directory = "#FAD07B";
-              branch = "#f28779";
-              symbol = "#73D0FF";
-              status = "#DFBFFF";
-              python = "#DCDCAA";
-              go = "#9CDCFE";
-              node = "#4EC9B0";
-              rust = "#4EC9B0";
+              red = "#f28779";
+              green = "#D5FF80";
+              blue = "#73D0FF";
+              orange = "#FFAD66";
             };
             everforestdark = {
-              error = "#E67E81";
-              success = "#7EB98C";
-              directory = "#DBBC7F";
-              branch = "#E67E81";
-              symbol = "#7FBBB3";
-              status = "#D699B6";
-              python = "#DBBC7F";
-              node = "#7EB98C";
-              rust = "#D699B6";
-              go = "#7FBBB3";
+              red = "#E67E81";
+              green = "#7EB98C";
+              blue = "#7FBBB3";
+              orange = "#E69875";
             };
             github_dark = {
-              error = "#F25D5D";
-              success = "#62D863";
-              directory = "#8AB6D6";
-              branch = "#F25D5D";
-              symbol = "#8AB6D6";
-              status = "#6C6C6C";
-              python = "#FFD700";
-              node = "#80B6F4";
-              rust = "#D77B7B";
-              go = "#3E8EDE";
+              red = "#F25D5D";
+              green = "#62D863";
+              blue = "#8AB6D6";
+              orange = "#F69D50";
             };
           };
         };
