@@ -63,6 +63,7 @@
   modules.cli.ripgrep.enable = true;
   modules.cli.yazi.enable = true;
   modules.cli.zellij.enable = true;
+  modules.cli.fastfetch.enable = true;
 
   ##### Dev
   modules.dev.cli.git.enable = true;
