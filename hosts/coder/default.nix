@@ -86,6 +86,7 @@
   modules.terminals.foot.font = "jetbrains";
 
   ##### Applications
-  modules.programs.browsers.firefox.enable = true;
+  # modules.programs.browsers.firefox.enable = true;
+  modules.programs.browsers.librewolf.enable = true;
   modules.programs.productivity.obsidian.enable = true;
 }
