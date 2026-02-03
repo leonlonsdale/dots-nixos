@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   lib,
   username,
   ...
@@ -27,19 +26,8 @@ in
         '';
 
         shellAliases = {
-          ls = "eza --icons --color=always --group-directories-first";
-          ll = "eza -l --icons --color=always --group-directories-first";
-          la = "eza -la --icons --color=always --group-directories-first";
-          cat = "bat";
-          cd = "z";
-          man = "tldr";
           cl = "clear";
         };
-      };
-
-      programs.zoxide = {
-        enable = true;
-        enableZshIntegration = true;
       };
     };
   };

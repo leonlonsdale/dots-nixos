@@ -49,6 +49,7 @@
 
   ##### Shell & CLI
   modules.shell.zsh.enable = true;
+  modules.cli.zoxide.enable = true;
   modules.cli.starship.enable = true;
   # modules.cli.starship.palette = "tokyonight";
   modules.cli.btop.enable = true;
