@@ -46,13 +46,8 @@ in
           palette = cfg.palette;
           add_newline = true;
 
-          # LINE 1: The White Pill (Email + Git)
-          # LINE 2: Directory + Languages
           format = lib.concatStrings [
-            "[](white)"
-            "\${custom.git_config_email}"
-            "$git_branch"
-            "[](white)"
+            "([](white)\${custom.git_config_email}$git_branch[](white))"
             "$line_break"
             "$directory"
             "$python"
@@ -107,7 +102,6 @@ in
             format = "[in ](green)[󰝰 $path]($style)[$read_only]($read_only_style) ";
           };
 
-          # Language Modules with Official Brand Colors
           python = {
             symbol = " ";
             format = "[$symbol($version)]($style) ";
