@@ -31,6 +31,9 @@
   # FEATURE TOGGLES (MODULES)
   # ============================================================================
 
+  ##### Hardware
+  modules.hardware.nvidia.enable = true; # only enable on nvidia 20+ series
+
   ##### Appearance
   modules.appearance.theme.catppuccin.enable = true;
   modules.appearance.theme.catppuccin.flavor = "mocha";
