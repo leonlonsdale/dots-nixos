@@ -79,8 +79,8 @@ in
             "$terraform"
             "$nix_shell"
             "$package"
-            "$line_break"
             "$git_status"
+            "$line_break"
             "$character"
           ];
 
@@ -97,17 +97,7 @@ in
           };
 
           git_status = {
-            style = "bg:white";
-            format = "[([$all_status$ahead_behind](fg:0))]($style) ";
-            conflicted = "[!]](fg:red)";
-            untracked = "[?]](fg:red)";
-            modified = "[!]](fg:red)";
-            deleted = "[x]](fg:red)";
-            staged = "[+](fg:208)";
-            renamed = "[»](fg:208)";
-            ahead = "[⇡](fg:blue)";
-            behind = "[⇣](fg:blue)";
-            stashed = "[S](fg:blue)";
+            style = "status";
           };
 
           directory = {
