@@ -21,7 +21,10 @@ in
     home-manager.users.${username} = {
       programs.fish = {
         enable = true;
-        interactiveShellInit = "set fish_greeting";
+        interactiveShellInit = ''
+          set fish_greeting
+          fastfetch
+        '';
         shellAliases = {
           cl = "clear";
         };

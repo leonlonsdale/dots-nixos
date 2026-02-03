@@ -23,6 +23,7 @@ in
         enableCompletion = true;
         initContent = ''
           zsh-newuser-install() { :; }
+          fastfetch
         '';
 
         shellAliases = {
