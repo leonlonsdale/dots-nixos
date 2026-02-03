@@ -31,6 +31,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    environment.systemPackages = [ pkgs.starship ];
+
     home-manager.users.${username} = {
       programs.starship = {
         enable = true;

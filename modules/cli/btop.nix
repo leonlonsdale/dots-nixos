@@ -21,6 +21,8 @@ in
   };
 
   config = lib.mkIf cfg.enable {
+    environment.systemPackages = [ pkgs.btop ];
+
     home-manager.users.${username}.programs.btop = {
       enable = true;
       settings = {
