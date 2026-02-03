@@ -93,6 +93,9 @@ hjem.users.${username}.systemd.enable = false;
 ```
 
 - [ ] How to install [OpenLinkHub](https://github.com/jurkovic-nikola/OpenLinkHub) - I have a lot of Corsair iCUE Link hardware.
+
+- [ ] How to add [Arkenfox Firefox Tweaks](https://github.com/arkenfox/user.js)
+
 ## Todo
 
 ### Common
@@ -152,7 +155,7 @@ hjem.users.${username}.systemd.enable = false;
 ### Todo (Gamer profile)
 
 - [ ] Install and configure Hyprland
-- [ ] Install Steam
+- [x] Install Steam
 
 ## Coding & Structure
 
