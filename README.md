@@ -39,7 +39,7 @@ Fixed this without figuring out the issue - I just installed DMS Greeter, and so
 
 - [x] App launcher menu does not display icons.
 
-This one turned on rather simple. Adding a qt module that includes qt5, 6 and gtc settings resolved this issue. Though I would have assumed this would come packaged as part of DMS given it comes with an app menu.
+This one turned out rather simple. Adding a qt module that includes qt5, 6 and gtk settings resolved this issue. Though I would have assumed this would come packaged as part of DMS given it comes with an app menu.
 
 Adding 
 
@@ -57,9 +57,10 @@ Adding
 
 I did this with [hjem](https://github.com/feel-co/hjem).
 
-In flake.nix:
 
 ```nix
+# flake.nix
+
 # inputs
 hjem.url = "github:feel-co/hjem"
 hjem.inputs.nixpkgs.follows = "nixpkgs";
@@ -74,6 +75,7 @@ wallpapers.flake = false;
   ];
 
 # modules/ui/wallpaper.nix (where I wrote it)
+
 { inputs, ... }:
 {
   hjem.users."yourusername" = {
