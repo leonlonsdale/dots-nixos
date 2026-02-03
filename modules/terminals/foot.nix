@@ -8,6 +8,8 @@
 let
   cfg = config.modules.terminals.foot;
   fnt = config.modules.appearance.fonts;
+
+  enabledKeys = lib.attrNames (lib.filterAttrs (n: v: v.enable) fnt);
 in
 {
   options.modules.terminals.foot = {
@@ -20,10 +22,18 @@ in
     font = lib.mkOption {
       type = lib.types.str;
       default = "monospace";
+      description = "Selected font key. Currently enabled: ${lib.concatStringsSep ", " enabledKeys}";
     };
   };
 
   config = lib.mkIf cfg.enable {
+    assertions = [
+      {
+        assertion = cfg.font == "monospace" || (fnt ? ${cfg.font} && fnt.${cfg.font}.enable);
+        message = "Font '${cfg.font}' is not enabled in modules.appearance.fonts!";
+      }
+    ];
+
     home-manager.users.${username} = {
       home.sessionVariables = lib.mkIf cfg.setAsDefault {
         TERMINAL = "foot";

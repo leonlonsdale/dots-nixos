@@ -1,74 +1,86 @@
+{ self, ... }:
 {
-  self,
-  stateVersion,
-  hostname,
-  ...
-}:
-{
+  # ============================================================================
+  # HOST-SPECIFIC CONFIGURATION
+  # ============================================================================
+  # NOTE: Basic user settings (shell, home-manager, stateVersion) are inherited
+  # from commonConfig.nix.
+  #
+  # To OVERRIDE or CLEAR the default extraGroups (wheel, networkmanager, etc.):
+  # users.users.${username}.extraGroups = lib.mkForce [ "customgroup" ];
+  #
+  # OR to remove all groups:
+  # users.users.${username}.extraGroups = lib.mkForce [ ];
+  #
+  # To APPEND additional groups:
+  # users.users.leonl.extraGroups = [ "docker" "libvirtd" ];
+  # ============================================================================
+
   imports = [
     /etc/nixos/hardware-configuration.nix
     (self + "/modules")
-    ./user.nix
-    ./home.nix
   ];
 
-  networking.hostName = hostname;
-  system.stateVersion = stateVersion;
+  # Security / Nix power settings
+  nix.settings.trusted-users = [
+    "root"
+    "@wheel"
+  ];
 
-  modules = {
-    ##### Appearance
-    appearance.theme.catppuccin.enable = true;
-    appearance.theme.catppuccin.flavor = "mocha";
-    appearance.theme.catppuccin.accent = "mauve";
-    appearance.fonts.hurmit.enable = true;
-    appearance.fonts.jetbrains.enable = true;
-    appearance.fonts.victor.enable = true;
-    appearance.desktops.niri.enable = true;
-    appearance.ui.dms.enable = true;
-    appearance.ui.dms.greeter.enable = true;
-    appearance.ui.icons.qt.enable = true;
-    appearance.wallpapers.personal-walls.enable = true;
+  # ============================================================================
+  # FEATURE TOGGLES (MODULES)
+  # ============================================================================
 
-    ##### Shell & CLI
-    shell.zsh.enable = true;
+  ##### Appearance
+  modules.appearance.theme.catppuccin.enable = true;
+  modules.appearance.theme.catppuccin.flavor = "mocha";
+  modules.appearance.theme.catppuccin.accent = "mauve";
+  modules.appearance.fonts.hurmit.enable = true;
+  modules.appearance.fonts.jetbrains.enable = true;
+  modules.appearance.fonts.victor.enable = true;
+  modules.appearance.desktops.niri.enable = true;
+  modules.appearance.ui.dms.enable = true;
+  modules.appearance.ui.dms.greeter.enable = true;
+  modules.appearance.ui.icons.qt.enable = true;
+  modules.appearance.wallpapers.personal-walls.enable = true;
 
-    cli.starship.enable = true;
-    # cli.starship.palette = "tokyonight";
-    cli.btop.enable = true;
-    # cli.btop.theme = "tokyo-night";
-    cli.bat.enable = true;
-    cli.eza.enable = true;
-    cli.fd.enable = true;
-    cli.fzf.enable = true;
-    cli.jq.enable = true;
-    cli.ripgrep.enable = true;
-    cli.yazi.enable = true;
-    cli.zellij.enable = true;
+  ##### Shell & CLI
+  modules.shell.zsh.enable = true;
+  modules.cli.starship.enable = true;
+  # modules.cli.starship.palette = "tokyonight";
+  modules.cli.btop.enable = true;
+  # modules.cli.btop.theme = "tokyo-night";
+  modules.cli.bat.enable = true;
+  modules.cli.eza.enable = true;
+  modules.cli.fd.enable = true;
+  modules.cli.fzf.enable = true;
+  modules.cli.jq.enable = true;
+  modules.cli.ripgrep.enable = true;
+  modules.cli.yazi.enable = true;
+  modules.cli.zellij.enable = true;
 
-    ##### Dev
-    dev.cli.git.enable = true;
-    dev.cli.gh.enable = true;
-    dev.cli.lazygit.enable = true;
-    dev.editors.helix.enable = true;
-    dev.languages.go.enable = true;
-    dev.languages.python.enable = true;
-    dev.languages.web.enable = true;
-    dev.languages.sql.enable = true;
-    dev.languages.lua.enable = true;
-    dev.languages.markdown.enable = true;
-    dev.languages.toml.enable = true;
-    dev.languages.yaml.enable = true;
-    dev.languages.nix.enable = true;
+  ##### Dev
+  modules.dev.cli.git.enable = true;
+  modules.dev.cli.gh.enable = true;
+  modules.dev.cli.lazygit.enable = true;
+  modules.dev.editors.helix.enable = true;
+  modules.dev.languages.go.enable = true;
+  modules.dev.languages.python.enable = true;
+  modules.dev.languages.web.enable = true;
+  modules.dev.languages.sql.enable = true;
+  modules.dev.languages.lua.enable = true;
+  modules.dev.languages.markdown.enable = true;
+  modules.dev.languages.toml.enable = true;
+  modules.dev.languages.yaml.enable = true;
+  modules.dev.languages.nix.enable = true;
 
-    ##### Terminal
-    terminals.kitty.enable = true;
-    terminals.kitty.setAsDefault = true;
-    # terminals.kitty.theme = "tokyonight-storm";
-    terminals.kitty.font = "jetbrains";
+  ##### Terminal
+  modules.terminals.foot.enable = true;
+  modules.terminals.foot.setAsDefault = true;
+  # modules.terminals.foot.theme = "tokyonight-storm";
+  modules.terminals.foot.font = "jetbrains";
 
-    ##### Applications
-
-    programs.browsers.firefox.enable = true;
-    programs.productivity.obsidian.enable = true;
-  };
+  ##### Applications
+  modules.programs.browsers.firefox.enable = true;
+  modules.programs.productivity.obsidian.enable = true;
 }

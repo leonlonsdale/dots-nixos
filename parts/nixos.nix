@@ -27,6 +27,7 @@ let
           inputs.catppuccin.nixosModules.catppuccin
           inputs.hjem.nixosModules.default
           inputs.home-manager.nixosModules.home-manager
+          (self + "/hosts/commonConfig.nix")
           (self + "/hosts/${hostname}")
         ];
       }

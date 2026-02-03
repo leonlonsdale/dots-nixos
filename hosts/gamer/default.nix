@@ -1,41 +1,57 @@
 {
   self,
-  stateVersion,
-  hostname,
   ...
 }:
 {
+  # ============================================================================
+  # HOST-SPECIFIC CONFIGURATION
+  # ============================================================================
+  # NOTE: Basic user settings (shell, home-manager, stateVersion) are inherited
+  # from commonConfig.nix.
+  #
+  # To OVERRIDE or CLEAR the default extraGroups (wheel, networkmanager, etc.):
+  # users.users.${username}.extraGroups = lib.mkForce [ "customgroup" ];
+  #
+  # OR to remove all groups:
+  # users.users.${username}.extraGroups = lib.mkForce [ ];
+  #
+  # To APPEND additional groups:
+  # users.users.${username}.extraGroups = [ "docker" "libvirtd" ];
+  # ============================================================================
+
   imports = [
     /etc/nixos/hardware-configuration.nix
     (self + "/modules")
-    ./user.nix
-    ./home.nix
   ];
 
-  networking.hostName = hostname;
-  system.stateVersion = stateVersion;
+  # Security / Nix power settings
+  nix.settings.trusted-users = [
+    "root"
+    "@wheel"
+  ];
 
-  modules = {
-    ##### Appearance
-    appearance.theme.catppuccin.enable = true;
-    appearance.theme.catppuccin.flavor = "mocha";
-    appearance.theme.catppuccin.accent = "mauve";
-    appearance.desktops.kdeplasma.enable = true;
-    appearance.wallpapers.personal-walls.enable = true;
+  # ============================================================================
+  # FEATURE TOGGLES (MODULES)
+  # ============================================================================
 
-    ##### Shell & CLI
-    shell.zsh.enable = true;
-    cli.starship.enable = true;
-    cli.yazi.enable = true;
+  ##### Appearance
+  modules.appearance.theme.catppuccin.enable = true;
+  modules.appearance.theme.catppuccin.flavor = "mocha";
+  modules.appearance.theme.catppuccin.accent = "mauve";
+  modules.appearance.desktops.kdeplasma.enable = true;
+  modules.appearance.wallpapers.personal-walls.enable = true;
 
-    ##### Terminal
-    terminals.kitty.enable = true;
-    terminals.kitty.setAsDefault = true;
-    # terminals.kitty.theme = "tokyonight-storm";
-    terminals.kitty.font = "jetbrains";
+  ##### Shell & CLI
+  modules.shell.zsh.enable = true;
+  modules.cli.starship.enable = true;
+  modules.cli.yazi.enable = true;
 
-    ##### Applications
+  ##### Terminal
+  modules.terminals.kitty.enable = true;
+  modules.terminals.kitty.setAsDefault = true;
+  # modules.terminals.kitty.theme = "tokyonight-storm";
+  modules.terminals.kitty.font = "jetbrains";
 
-    programs.browsers.firefox.enable = true;
-  };
+  ##### Applications
+  modules.programs.browsers.firefox.enable = true;
 }
