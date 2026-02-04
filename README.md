@@ -49,7 +49,11 @@ pkgs.adwaita-icon-theme
 
 for example. Module created under /modules/appearance/ui/icons.nix
 
-- [ ] Mouse cursor is not themed, and is pretty huge.
+- [x] Mouse cursor is not themed, and is pretty huge.
+
+This one also turned out to be rather simple. Like the application icons, it just required installation of a cursor theme.
+
+I created a module or cursor themes under /modules/appearance/ui/cursors.nix
 
 ## Things to learn
 
@@ -184,3 +188,5 @@ hjem.users.${username}.systemd.enable = false;
   Has answered a lot of questions where I'm sure most people would tell me to get lost.
 
 - [Yui Tayuun](https://codeberg.org/yuitayuun) for the help getting Icons working.
+
+- [professional_distro_hopper](https://github.com/devnchill) - from the [unofficial nixos discord](https://discord.gg/2MJZpTM6) for pointing me in the right direction for the cursor fix.
