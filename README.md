@@ -4,7 +4,7 @@
 
 This is my NixOS config.
 
-I use CachyOS mainly, but was tempted to give Nix a try after watching videos on youtue by [vimjoyer](https://www.youtube.com/@vimjoyer).
+I started on CachyOS after switching from Windows in January 2026, but was tempted to give Nix a try after watching videos on youtue by [vimjoyer](https://www.youtube.com/@vimjoyer).
 
 The config is a bit of a hobby project, learning nix and how to configure declaratively. Who knows, it may become my main distro if it goes well enough.
 
@@ -189,4 +189,4 @@ hjem.users.${username}.systemd.enable = false;
 
 - [Yui Tayuun](https://codeberg.org/yuitayuun) for the help getting Icons working.
 
-- [professional_distro_hopper](https://github.com/devnchill) - from the [unofficial nixos discord](https://discord.gg/2MJZpTM6) for pointing me in the right direction for the cursor fix.
+- [viena](https://github.com/devnchill) - from the [unofficial nixos discord](https://discord.gg/2MJZpTM6) for pointing me in the right direction for the cursor fix.
