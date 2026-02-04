@@ -99,7 +99,7 @@ in
             truncation_length = 1;
             read_only = " 🔒";
             style = "blue";
-            format = "[in ](green)[󰝰 $path]($style)[$read_only]($read_only_style) ";
+            format = "[󰝰 $path]($style)[$read_only]($read_only_style) ";
           };
 
           python = {
