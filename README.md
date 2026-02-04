@@ -39,9 +39,15 @@ Fixed this without figuring out the issue - I just installed DMS Greeter, and so
 
 - [x] App launcher menu does not display icons.
 
-This one turned out rather simple. Adding a qt module that includes qt5, 6 and gtk settings resolved this issue. Though I would have assumed this would come packaged as part of DMS given it comes with an app menu.
+This one turned out rather simple - simply installing an icon theme.
 
-Adding 
+Adding:
+
+```nix
+pkgs.adwaita-icon-theme
+```
+
+for example. Module created under /modules/appearance/ui/icons.nix
 
 - [ ] Mouse cursor is not themed, and is pretty huge.
 

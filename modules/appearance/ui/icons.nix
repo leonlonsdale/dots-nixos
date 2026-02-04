@@ -6,11 +6,9 @@
 }:
 
 let
-  # Updated to match the options path below
   cfg = config.modules.appearance.ui.icons;
 in
 {
-  # Make sure this path matches exactly what you use in host.nix
   options.modules.appearance.ui.icons = lib.mkOption {
     type = lib.types.attrsOf (
       lib.types.submodule {
