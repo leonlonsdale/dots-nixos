@@ -10,6 +10,7 @@ in
 
   config = lib.mkIf cfg.enable {
     hardware.graphics.enable = true;
+    hardware.graphics.enable32Bit = true;
     services.xserver.videoDrivers = [ "nvidia" ];
 
     hardware.nvidia = {
@@ -19,6 +20,10 @@ in
       nvidiaSettings = true;
       # Use the stable package for the current kernel
       package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
+    environment.variables = {
+      GBM_BACKEND = "nvidia-drm";
+      LIBVA_DRIVER_NAME = "nvidia";
     };
   };
 }
