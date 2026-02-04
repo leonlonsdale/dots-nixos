@@ -35,10 +35,18 @@ in
         prettyName = lib.mkDefault "Hurmit Nerd Font";
         package = lib.mkDefault pkgs.nerd-fonts.hurmit;
       };
+      comic-sans = {
+        prettyName = lib.mkDefault "Comic Sans MS";
+        package = lib.mkDefault pkgs.corefonts;
+      };
+      comic-shanns = {
+        prettyName = lib.mkDefault "ComicShannsMono Nerd Font";
+        package = lib.mkDefault pkgs.nerd-fonts.comic-shanns-mono;
+      };
     };
 
-    fonts.packages = lib.mapAttrsToList (name: value: value.package) (
-      lib.filterAttrs (name: value: value.enable) cfg
-    );
+    fonts.packages =
+      (lib.mapAttrsToList (name: value: value.package) (lib.filterAttrs (name: value: value.enable) cfg))
+      ++ [ pkgs.nerd-fonts.symbols-only ];
   };
 }

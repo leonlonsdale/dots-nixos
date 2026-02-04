@@ -41,10 +41,13 @@
   modules.appearance.fonts.hurmit.enable = true;
   modules.appearance.fonts.jetbrains.enable = true;
   modules.appearance.fonts.victor.enable = true;
+  modules.appearance.fonts.comic-sans.enable = true;
+  modules.appearance.fonts.comic-shanns.enable = true;
   modules.appearance.desktops.niri.enable = true;
   modules.appearance.ui.dms.enable = true;
   modules.appearance.ui.dms.greeter.enable = true;
-  modules.appearance.ui.icons.qt.enable = true;
+  # modules.appearance.ui.qt.enable = true;
+  modules.appearance.ui.icons.adwaita.enable = true;
   modules.appearance.wallpapers.personal-walls.enable = true;
 
   ##### Shell & CLI
@@ -84,10 +87,10 @@
   modules.terminals.foot.enable = true;
   modules.terminals.foot.setAsDefault = true;
   # modules.terminals.foot.theme = "tokyonight-storm";
-  modules.terminals.foot.font = "jetbrains";
+  modules.terminals.foot.font = "hurmit";
 
   ##### Applications
-  # modules.programs.browsers.firefox.enable = true;
-  modules.programs.browsers.librewolf.enable = true;
+  modules.programs.browsers.firefox.enable = true;
+  # modules.programs.browsers.librewolf.enable = true;
   modules.programs.productivity.obsidian.enable = true;
 }

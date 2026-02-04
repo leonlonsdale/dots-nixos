@@ -6,10 +6,10 @@
   ...
 }:
 let
-  cfg = config.modules.appearance.ui.icons.qt;
+  cfg = config.modules.appearance.ui.qt;
 in
 {
-  options.modules.appearance.ui.icons.qt = {
+  options.modules.appearance.ui.qt = {
     enable = lib.mkEnableOption "System-wide QT/GTK Icon Theme (Breeze)";
   };
 
