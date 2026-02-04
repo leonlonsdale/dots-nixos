@@ -48,6 +48,8 @@
   modules.appearance.ui.dms.greeter.enable = true;
   # modules.appearance.ui.qt.enable = true;
   modules.appearance.ui.icons.adwaita.enable = true;
+  modules.appearance.ui.cursor.catppuccin.enable = true;
+  modules.appearance.ui.cursor.bibata.enable = true;
   modules.appearance.wallpapers.personal-walls.enable = true;
 
   ##### Shell & CLI
