@@ -46,7 +46,6 @@
   modules.appearance.desktops.niri.enable = true;
   modules.appearance.ui.dms.enable = true;
   modules.appearance.ui.dms.greeter.enable = true;
-  # modules.appearance.ui.qt.enable = true;
   modules.appearance.ui.icons.adwaita.enable = true;
   modules.appearance.ui.cursor.catppuccin.enable = true;
   modules.appearance.ui.cursor.bibata.enable = true;
@@ -89,10 +88,9 @@
   modules.terminals.foot.enable = true;
   modules.terminals.foot.setAsDefault = true;
   # modules.terminals.foot.theme = "tokyonight-storm";
-  modules.terminals.foot.font = "hurmit";
+  modules.terminals.foot.font = "comic-shanns";
 
   ##### Applications
   modules.programs.browsers.firefox.enable = true;
-  # modules.programs.browsers.librewolf.enable = true;
   modules.programs.productivity.obsidian.enable = true;
 }

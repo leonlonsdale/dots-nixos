@@ -41,8 +41,11 @@
   modules.appearance.theme.catppuccin.enable = true;
   modules.appearance.theme.catppuccin.flavor = "mocha";
   modules.appearance.theme.catppuccin.accent = "mauve";
+  modules.appearance.fonts.comic-shanns.enable = true;
   modules.appearance.desktops.kdeplasma.enable = true;
   modules.appearance.wallpapers.personal-walls.enable = true;
+  modules.appearance.ui.icons.adwaita.enable = true;
+  modules.appearance.ui.cursor.catppuccin.enable = true;
 
   ##### Gaming
   modules.gaming.steam.enable = true;
@@ -55,7 +58,7 @@
   ##### Terminal
   modules.terminals.foot.enable = true;
   modules.terminals.foot.setAsDefault = true;
-  modules.terminals.foot.font = "jetbrains";
+  modules.terminals.foot.font = "comic-shanns";
 
   ##### Applications
   modules.programs.browsers.firefox.enable = true;
