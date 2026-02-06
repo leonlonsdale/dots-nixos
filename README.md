@@ -178,6 +178,9 @@ hjem.users.${username}.systemd.enable = false;
 
 ## Inspirations & Credits
 
+
+- [A1RMAX](https://youtube.com/@a1rm4x?si=Vj4Rq-0magk46NbB) - great youtube videos. These vids convinced me to try NixOS.
+
 - [vimjoyer](https://www.youtube.com/@vimjoyer) - videos
   Great videos on all things nix.
 
