@@ -4,7 +4,7 @@
 
 This is my NixOS config.
 
-I started on CachyOS after switching from Windows in January 2026, but was tempted to give Nix a try after watching videos on youtue by [vimjoyer](https://www.youtube.com/@vimjoyer).
+I started on CachyOS after switching from Windows in January 2026, but was tempted to give Nix a try after watching videos on YouTube by [A1RMAX](https://youtube.com/@a1rm4x?si=Vj4Rq-0magk46NbB) and [vimjoyer](https://www.youtube.com/@vimjoyer).
 
 The config is a bit of a hobby project, learning nix and how to configure declaratively. Who knows, it may become my main distro if it goes well enough.
 
