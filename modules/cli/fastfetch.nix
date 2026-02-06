@@ -110,6 +110,28 @@ in
 
             "break"
 
+            # --- Displays ---
+            {
+              type = "custom";
+              format = "┌────────── Displays ──────────┐";
+              outputColor = "magenta";
+            }
+            {
+              type = "display";
+              key = "│ 󰍹 ";
+              # {name} = Model Name
+              # {7}" = Diagonal size in inches (e.g., 27")
+              # {1}x{2} @ {3}Hz = Resolution and Refresh Rate
+              format = "{name} \({12}\"\) {1}x{2} @ {3}Hz";
+            }
+            {
+              type = "custom";
+              format = "└──────────────────────────────┘";
+              outputColor = "magenta";
+            }
+
+            "break"
+
             # --- Stats ---
             {
               type = "custom";
