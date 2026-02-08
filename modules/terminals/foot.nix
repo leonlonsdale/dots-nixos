@@ -15,10 +15,10 @@ in
   options.modules.terminals.foot = {
     enable = lib.mkEnableOption "foot terminal";
     setAsDefault = lib.mkEnableOption "set foot as default terminal";
-    # theme = lib.mkOption {
-    #   type = lib.types.str;
-    #   default = "tokyonight-storm";
-    # };
+    theme = lib.mkOption {
+      type = lib.types.str;
+      default = "tokyonight-storm";
+    };
     font = lib.mkOption {
       type = lib.types.str;
       default = "monospace";

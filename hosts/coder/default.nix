@@ -35,9 +35,9 @@
   modules.hardware.nvidia.enable = true; # only enable on nvidia 20+ series
 
   ##### Appearance
-  modules.appearance.theme.catppuccin.enable = true;
-  modules.appearance.theme.catppuccin.flavor = "mocha";
-  modules.appearance.theme.catppuccin.accent = "mauve";
+  # modules.appearance.theme.catppuccin.enable = true;
+  # modules.appearance.theme.catppuccin.flavor = "mocha";
+  # modules.appearance.theme.catppuccin.accent = "mauve";
   modules.appearance.fonts.hurmit.enable = true;
   modules.appearance.fonts.jetbrains.enable = true;
   modules.appearance.fonts.victor.enable = true;
@@ -56,9 +56,9 @@
   modules.shell.fish.enable = true;
   modules.cli.zoxide.enable = true;
   modules.cli.starship.enable = true;
-  # modules.cli.starship.palette = "tokyonight";
+  # modules.cli.starship.palette = "nord";
   modules.cli.btop.enable = true;
-  # modules.cli.btop.theme = "tokyo-night";
+  modules.cli.btop.theme = "nord";
   modules.cli.bat.enable = true;
   modules.cli.eza.enable = true;
   modules.cli.fd.enable = true;
@@ -85,10 +85,10 @@
   modules.dev.languages.nix.enable = true;
 
   ##### Terminal
-  modules.terminals.foot.enable = true;
-  modules.terminals.foot.setAsDefault = true;
-  # modules.terminals.foot.theme = "tokyonight-storm";
-  modules.terminals.foot.font = "comic-shanns";
+  modules.terminals.ghostty.enable = true;
+  modules.terminals.ghostty.setAsDefault = true;
+  modules.terminals.ghostty.theme = "Nord";
+  modules.terminals.ghostty.font = "jetbrains";
 
   ##### Applications
   modules.programs.browsers.firefox.enable = true;
