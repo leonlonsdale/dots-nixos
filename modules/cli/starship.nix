@@ -17,6 +17,7 @@ in
     enable = lib.mkEnableOption "Starship prompt";
     palette = lib.mkOption {
       type = lib.types.enum [
+        "nord"
         "kanso"
         "tokyonight"
         "gruvbox"
@@ -47,9 +48,12 @@ in
           add_newline = true;
 
           format = lib.concatStrings [
-            "([](white)\${custom.git_config_email}$git_branch[](white))"
-            "$line_break"
+            # "([](white)\${custom.git_config_email}[](white))"
+            "╭─"
+            "$username"
             "$directory"
+            "$git_branch"
+            "\${custom.git_config_email}"
             "$python"
             "$nodejs"
             "$rust"
@@ -74,32 +78,59 @@ in
             "$terraform"
             "$nix_shell"
             "$package"
-            "$git_status"
             "$line_break"
+            "╰─"
+            "$git_status"
             "$character"
           ];
 
+          username = {
+            style_user = "green";
+            style_root = "green bold";
+            format = "[$user]($style) ";
+            disabled = false;
+            show_always = true;
+          };
+
+          # hostname = {
+          #   ssh_only = false;
+          #   style = "yellow";
+          #   format = "[@](bold)[$hostname]($style)";
+          #   trim_at = ".";
+          #   disabled = false;
+          # };
+
+          os = {
+            disabled = false;
+            format = "[$symbol]($style)";
+          };
+
+          os.symbols = {
+            NixOS = "[  ](blue)";
+            Linux = "🐧 ";
+          };
+
           custom.git_config_email = {
             command = "git config user.email";
-            format = "[ $output](bg:white fg:0 bold)";
+            format = "as  $output";
             when = "git rev-parse --is-inside-work-tree >/dev/null 2>&1";
           };
 
           git_branch = {
             symbol = "󰊢 ";
-            style = "bg:white fg:0 bold";
-            format = "[[ on ](bg:white fg:8)$symbol$branch]($style)";
+            style = "red";
+            format = "on [$symbol$branch]($style) ";
           };
 
           git_status = {
-            style = "status";
+            style = "status ";
           };
 
           directory = {
             truncation_length = 1;
             read_only = " 🔒";
             style = "blue";
-            format = "[󰝰 $path]($style)[$read_only]($read_only_style) ";
+            format = "in [󰝰 $path]($style)[$read_only]($read_only_style) ";
           };
 
           python = {
@@ -224,11 +255,17 @@ in
           };
 
           character = {
-            success_symbol = "[➜](bold green)";
-            error_symbol = "[➜](bold red)";
+            success_symbol = "[●](bold green)";
+            error_symbol = "[●](bold red)";
           };
 
           palettes = {
+            nord = {
+              blue = "#88c0d0";
+              green = "#a3be8c";
+              red = "#bf616a";
+              orange = "#d08770";
+            };
             kanso = {
               red = "#c4746e";
               green = "#8a9a7b";

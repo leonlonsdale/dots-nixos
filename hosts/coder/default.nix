@@ -47,7 +47,7 @@
   modules.appearance.ui.dms.enable = true;
   modules.appearance.ui.dms.greeter.enable = true;
   modules.appearance.ui.icons.adwaita.enable = true;
-  modules.appearance.ui.cursor.catppuccin.enable = true;
+  # modules.appearance.ui.cursor.catppuccin.enable = true;
   modules.appearance.ui.cursor.bibata.enable = true;
   modules.appearance.wallpapers.personal-walls.enable = true;
 
@@ -56,7 +56,7 @@
   modules.shell.fish.enable = true;
   modules.cli.zoxide.enable = true;
   modules.cli.starship.enable = true;
-  # modules.cli.starship.palette = "nord";
+  modules.cli.starship.palette = "nord";
   modules.cli.btop.enable = true;
   modules.cli.btop.theme = "nord";
   modules.cli.bat.enable = true;
@@ -85,10 +85,10 @@
   modules.dev.languages.nix.enable = true;
 
   ##### Terminal
-  modules.terminals.ghostty.enable = true;
-  modules.terminals.ghostty.setAsDefault = true;
-  modules.terminals.ghostty.theme = "Nord";
-  modules.terminals.ghostty.font = "jetbrains";
+  modules.terminals.foot.enable = true;
+  modules.terminals.foot.setAsDefault = true;
+  modules.terminals.foot.theme = "nord";
+  modules.terminals.foot.font = "jetbrains";
 
   ##### Applications
   modules.programs.browsers.firefox.enable = true;

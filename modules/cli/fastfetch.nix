@@ -18,146 +18,91 @@ in
       programs.fastfetch = {
         enable = true;
         settings = {
-          logo = {
-            source = "nixos";
-            padding = {
-              top = 1;
-              right = 3;
-            };
-          };
+          logo.source = "none";
           display = {
-            separator = " ";
-            color = {
-              keys = "magenta";
-            };
+            separator = "   ";
           };
           modules = [
-            # --- Software ---
             {
               type = "custom";
-              format = "┌────────── Software ──────────┐";
-              outputColor = "magenta";
+              format = "{#35}╭──────────────────╮";
             }
+
             {
               type = "os";
-              key = "│ 󱄅 ";
+              key = "{#35}│ {#0}{#32}󱄅  OS            {#35}│";
               format = "{2} {8}";
             }
             {
               type = "kernel";
-              key = "│ 󰌽 ";
+              key = "{#35}│ {#0}{#33}󰌽  Kernel        {#35}│";
               format = "{2}";
             }
             {
               type = "packages";
-              key = "│ 󰏖 ";
-              # No complex tokens—let Fastfetch do its job.
-              # It will display "123 (nix-system), 45 (nix-user)" automatically.
+              key = "{#35}│ {#0}{#34}󰏖  Packages      {#35}│";
             }
             {
               type = "shell";
-              key = "│ 󰈺 ";
+              key = "{#35}│ {#0}{#36}󰈺  Shell         {#35}│";
               format = "{1}";
             }
             {
               type = "wm";
-              key = "│ 󱂬 ";
+              key = "{#35}│ {#0}{#35}󱂬  WM            {#35}│";
               format = "{2}";
             }
-            {
-              type = "custom";
-              format = "└──────────────────────────────┘";
-              outputColor = "magenta";
-            }
 
-            "break"
-
-            # --- Hardware ---
-            {
-              type = "custom";
-              format = "┌────────── Hardware ──────────┐";
-              outputColor = "magenta";
-            }
             {
               type = "host";
-              key = "│ 󰌢 ";
+              key = "{#35}│ {#0}{#32}󰌢  Host          {#35}│";
             }
             {
               type = "cpu";
-              key = "│ 󰻠 ";
+              key = "{#35}│ {#0}{#33}󰻠  CPU           {#35}│";
               format = "{1}";
             }
             {
               type = "gpu";
-              key = "│ 󰢮 ";
+              key = "{#35}│ {#0}{#34}󰢮  GPU           {#35}│";
               format = "{2}";
             }
             {
               type = "memory";
-              key = "│ 󰍛 ";
+              key = "{#35}│ {#0}{#36}󰍛  Memory        {#35}│";
               format = "{1} / {2}";
             }
             {
               type = "disk";
-              key = "│ 󰋊 ";
+              key = "{#35}│ {#0}{#35}󰋊  Disk          {#35}│";
               format = "{1} / {2}";
             }
-            {
-              type = "custom";
-              format = "└──────────────────────────────┘";
-              outputColor = "magenta";
-            }
 
-            "break"
-
-            # --- Displays ---
-            {
-              type = "custom";
-              format = "┌────────── Displays ──────────┐";
-              outputColor = "magenta";
-            }
             {
               type = "display";
-              key = "│ 󰍹 ";
-              # {name} = Model Name
-              # {7}" = Diagonal size in inches (e.g., 27")
-              # {1}x{2} @ {3}Hz = Resolution and Refresh Rate
-              format = "{name} \({12}\"\) {1}x{2} @ {3}Hz";
-            }
-            {
-              type = "custom";
-              format = "└──────────────────────────────┘";
-              outputColor = "magenta";
-            }
-
-            "break"
-
-            # --- Stats ---
-            {
-              type = "custom";
-              format = "┌──────────── Stats ───────────┐";
-              outputColor = "magenta";
+              key = "{#35}│ {#0}{#32}󰍹  Display       {#35}│";
+              format = "{name} \({12}\"\) {1}x{2} @ {3} Hz";
             }
             {
               type = "datetime";
-              key = "│ 󰃭 ";
+              key = "{#35}│ {#0}{#33}󰃭  Date          {#35}│";
               format = "{1}-{3}-{11}";
             }
             {
               type = "uptime";
-              key = "│ 󱘖 ";
+              key = "{#35}│ {#0}{#34}󱘖  Uptime        {#35}│";
               format = "{1}d {2}h {3}m";
             }
+
             {
               type = "custom";
-              format = "└──────────────────────────────┘";
-              outputColor = "magenta";
+              format = "{#35}╰──────────────────╯";
             }
 
             "break"
             {
               type = "colors";
-              symbol = "square";
+              symbol = "circle";
             }
           ];
         };

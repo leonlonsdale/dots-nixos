@@ -2,6 +2,7 @@
   config,
   lib,
   username,
+  pkgs,
   ...
 }:
 
@@ -41,13 +42,13 @@ in
 
       programs.foot = {
         enable = true;
-
         settings = {
           main = {
             term = "xterm-256color";
             font = "${if cfg.font == "monospace" then "monospace" else fnt.${cfg.font}.prettyName}:size=13";
             dpi-aware = "yes";
-            # include = "${pkgs.foot.themes}/share/foot/themes/${cfg.theme}";
+
+            include = "${pkgs.foot.themes}/share/foot/themes/${cfg.theme}";
             pad = "15x15";
           };
 
