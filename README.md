@@ -1,72 +1,75 @@
-# nixos-config
+# NixOS Configuration
 
-## About
+## Prelude
 
-This is my NixOS config.
+This repository acts as both my NixOS configuration repository and a log of my learning.
 
-I started on CachyOS after switching from Windows in January 2026, but was tempted to give Nix a try after watching videos on YouTube by [A1RMAX](https://youtube.com/@a1rm4x?si=Vj4Rq-0magk46NbB) and [vimjoyer](https://www.youtube.com/@vimjoyer).
+I made the decision to leave Windows behind and move to Linux at the end of January 2025 after becoming tired of Windows using so much memory and force feeding AI down my throat. I don't mind using AI when I need to, but I do not want it having access to my entire system. In fact, I code using Helix Editor specifically because it does not support AI.
 
-The config is a bit of a hobby project, learning nix and how to configure declaratively. Who knows, it may become my main distro if it goes well enough.
+I spent a day using CachyOS, which is great, but when everything is already set up for you, it removes the need to learn some things, and I wanted to learn. I read about the Nix declarative approach and it made a lot of sense to me, and so NixOS became my distro of choice.
 
-Why? I have a habit of reinstalling my OS. Often for no reason. I have to setup my environment from scratch each time. It's not so bad with my dotfiles available to pull, but I still have to install all my packages through pacman, brew, yay, and npm. My dotfiles don't actually change all that much either. The idea that I can just have a nix configuration that I pull and run, and everything is done for me, is very attractive.
+## Credits
 
-## Known Issues
+The following folks have donated time to answer my questions. A big thanks to them:
 
-- [x] Dank Material Shell settings read only
+- [A1RMAX](https://youtube.com/@a1rm4x?si=Vj4Rq-0magk46NbB) - great youtube videos. These vids convinced me to try NixOS.
 
-It would appear that using any `settings.xyz` or `system.xyz` options within the set up creates a read-only file. Removing these allows DMS to manage a file with live updates via the settings menus.
+- [vimjoyer](https://www.youtube.com/@vimjoyer) - videos
+  Great videos on all things nix.
 
-- [x] Dank Material Shell is unable to override Niri in the Niri Override settings.
+- [mightyiam](https://github.com/mightyiam) - Author of the Full Time Nix podcast, initiator of the NixOS dendritic pattern.
 
-It appears that `programs.niri.settings` must be called within the dms home-manager settings or the file is not created. Without the file, DMS cannot write to it.
+- [emzy](https://github.com/emzywastaken/dotfiles) - configuration.
+  Their configuration, although advanced, is very cleanly written and understandable. I've saved myself a lot of typing by reading this config and getting some ideas.
 
-- [x] Improper wake up from suspend - black screen on awake.
+- LuckShiba - from the [DMS/Niri discord](https://discord.gg/CcHgGnfGXf).
+  Has answered a lot of questions where I'm sure most people would tell me to get lost.
 
-Tried adding, the below, as recommended by [this video](https://www.youtube.com/watch?v=yALrQP3tW9w&themeRefresh=1):
+- [Yui Tayuun](https://codeberg.org/yuitayuun) for the help getting Icons working.
 
-```nix
-boot.kernelParams = [
-  "nvidia.NVreg_PreserveVideoMemoryAllocations=1"
-];
-```
-However, this had the opposite effect - the system would no longer suspend.
+- [viena](https://github.com/devnchill) - from the [unofficial nixos discord](https://discord.gg/2MJZpTM6) for pointing me in the right direction for the cursor fix.
+
+
+## NixOS Configuration
+
+### Known Issues
+
+- DMS cycles through my wallpapers. Every time the wallpaper changes, I get a "Reloaded the configuration" notification.
+
+### Resolved Issues
+
+#### Dank Material Shell settings are 'read only'.
+
+When setting up DMS via flake via home-manager, using any of the `settings` or `system` setting options causes  the configuration to become read only. Removing these settings fixed this issue.
+
+#### Dank Material Shell is unable to overwride Niri settings within the Niri Override area of the settings menu.
+
+Unless `programs.niri.settings` is part of the configuration, the settings file is not created. The DMS overrides do not create this for you and so this must be included.
+
+#### The PC wakes from suspend with a black screen.
 
 Changing `hardware.nvidia.powerManagement.enable = true;` as suggested in [the official wiki](https://wiki.nixos.org/wiki/NVIDIA#:~:text=hardware%2Envidia%2EpowerManagement%2Eenable%20%3D%20true) appears to have resolved the issue.
 
-- [x] System sometimes boots to tty and sometimes to Plymouth.
+#### The system sometimes boots into TTY and not into the sddm greeter
 
-Fixed this without figuring out the issue - I just installed DMS Greeter, and so far the issue has not happened again.
+I installed DMS Greeter, and so far the issue has not happened again. I still do not know what was causing the original issue.
 
-- [x] App launcher menu does not display icons.
+#### DMS App launcher menu does not display icons.
 
-This one turned out rather simple - simply installing an icon theme.
-
-Adding:
+This was a rookie error - I had to install an icon theme, such as:
 
 ```nix
 pkgs.adwaita-icon-theme
 ```
 
-for example. Module created under /modules/appearance/ui/icons.nix
+#### Mouse cursor is not themed, and is pretty huge.
 
-- [x] Mouse cursor is not themed, and is pretty huge.
+As above, I had to install a cursor theme.
 
-This one also turned out to be rather simple. Like the application icons, it just required installation of a cursor theme.
 
-I created a module or cursor themes under /modules/appearance/ui/cursors.nix
+#### I do not know how to install my personal wallpapers from my repo
 
-## Things to learn
-
-- [x] Home Manager. It's included in my config but I don't actually know how it works or how to use it properly. I'm kinda just getting lucky with it.
-
-- [x] flake-parts. I'm a big big fan of doing things in a modular way (you may notice from my config setup). Afte watching videos by [vimjoyer](https://www.youtube.com/@vimjoyer) about [flake-parts](https://www.youtube.com/watch?v=kvprcW6QMIE) and the [dendritic approach](https://www.youtube.com/watch?v=-TRbzkw6Hjs), I want to learn how to do this and implement it.
-
-- [x] How to install fonts
-
-- [x] How to install my wallpapers repo.
-
-I did this with [hjem](https://github.com/feel-co/hjem).
-
+After speaking with vimjoyer, he recommended `hjem` for this job. This worked great.
 
 ```nix
 # flake.nix
@@ -102,22 +105,20 @@ NOTE: To get this to work nicely with home manager, I had to add the following l
 hjem.users.${username}.systemd.enable = false;
 ```
 
-- [ ] How to install [OpenLinkHub](https://github.com/jurkovic-nikola/OpenLinkHub) - I have a lot of Corsair iCUE Link hardware.
+### Todo
 
-- [ ] How to add [Arkenfox Firefox Tweaks](https://github.com/arkenfox/user.js)
-
-## Todo
-
-### Common
+#### Common
 
 - [x] Install NixOS
 - [x] Modularise the default config
 - [x] Switch to flakes
 - [x] Set up nvidia drivers
+- [ ] How to install [OpenLinkHub](https://github.com/jurkovic-nikola/OpenLinkHub) - I have a lot of Corsair iCUE Link hardware, on all PCs.
+- [ ] How to add [Arkenfox Firefox Tweaks](https://github.com/arkenfox/user.js)
 
-### Coder Profile
+#### Coder Profile
 
-#### Terminal, Shell & CLI
+##### Terminal, Shell & CLI
 
 - [x] Implement Shells
   - [x] Zsh
@@ -148,13 +149,13 @@ hjem.users.${username}.systemd.enable = false;
   - [x] Kitty
   - [x] Foot
 
-#### Dev stuff
+##### Dev stuff
 
 - [x] Install and configure Helix Editor from master
   - [ ] Make Helix configs apply to both User and Root
 - [x] Install LSPs, Formatters, and Linters
 
-#### Apperance
+##### Apperance
 
 - [x] Install Niri
 - [x] Install DankMaterialShell
@@ -162,12 +163,12 @@ hjem.users.${username}.systemd.enable = false;
 - [x] Install my personal wallpapers
 - [x] Install favourite monospace nerd fonts
 
-### Todo (Gamer profile)
+#### Todo (Gamer profile)
 
 - [ ] Install and configure Hyprland
 - [x] Install Steam
 
-## Coding & Structure
+### Coding & Structure
 
 - [ ] Get a full understanding of nix code structure
 - [ ] Get a full understanding of flakes
@@ -176,20 +177,20 @@ hjem.users.${username}.systemd.enable = false;
 - [ ] Get a full understanding of flake parts
 - [ ] Implement dendritic structure
 
-## Inspirations & Credits
 
+## Dendritic Pattern
 
-- [A1RMAX](https://youtube.com/@a1rm4x?si=Vj4Rq-0magk46NbB) - great youtube videos. These vids convinced me to try NixOS.
+I have begun figuring this out on my spare PC. While I do have it working on a basic configuration, I need to spend more time reading up about it and how I can mirror the granular control I have within my current configuration.
 
-- [vimjoyer](https://www.youtube.com/@vimjoyer) - videos
-  Great videos on all things nix.
+### Resources
 
-- [emzy](https://github.com/emzywastaken/dotfiles) - configuration.
-  Their configuration, although advanced, is very cleanly written and understandable. I've saved myself a lot of typing by reading this config and getting some ideas.
+#### Literature
 
-- LuckShiba - from the [DMS/Niri discord](https://discord.gg/CcHgGnfGXf).
-  Has answered a lot of questions where I'm sure most people would tell me to get lost.
+- [Mightyiam - dendritic](https://github.com/mightyiam/dendritic)
+- [Doc-Steve](https://github.com/Doc-Steve/dendritic-design-with-flake-parts/wiki/Dendritic_Aspects)
 
-- [Yui Tayuun](https://codeberg.org/yuitayuun) for the help getting Icons working.
+#### Tools
 
-- [viena](https://github.com/devnchill) - from the [unofficial nixos discord](https://discord.gg/2MJZpTM6) for pointing me in the right direction for the cursor fix.
+- [flake-parts](https://github.com/hercules-ci/flake-parts)
+- [import-tree](https://github.com/vic/import-tree)
+- [flake-file](https://github.com/vic/flake-file)
