@@ -88,7 +88,7 @@
   modules.terminals.foot.enable = true;
   modules.terminals.foot.setAsDefault = true;
   modules.terminals.foot.theme = "nord";
-  modules.terminals.foot.font = "jetbrains";
+  modules.terminals.foot.font = "comic-shanns";
 
   ##### Applications
   modules.programs.browsers.firefox.enable = true;
