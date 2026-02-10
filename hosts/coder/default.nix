@@ -93,4 +93,5 @@
   ##### Applications
   modules.programs.browsers.firefox.enable = true;
   modules.programs.productivity.obsidian.enable = true;
+  modules.programs.file_managers.thunar.enable = true;
 }

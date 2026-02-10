@@ -45,7 +45,7 @@ in
         settings = {
           main = {
             term = "xterm-256color";
-            font = "${if cfg.font == "monospace" then "monospace" else fnt.${cfg.font}.prettyName}:size=13";
+            font = "${if cfg.font == "monospace" then "monospace" else fnt.${cfg.font}.prettyName}:size=12";
             dpi-aware = "yes";
 
             include = "${pkgs.foot.themes}/share/foot/themes/${cfg.theme}";
