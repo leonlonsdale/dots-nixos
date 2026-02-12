@@ -57,7 +57,7 @@ in
         enable = true;
         settings = {
           font-family = if cfg.font == "monospace" then "monospace" else fnt.${cfg.font}.prettyName;
-          font-size = 12;
+          font-size = 14;
           theme = cfg.theme;
           window-decoration = false;
           unfocused-split-opacity = 0.1;
@@ -69,6 +69,7 @@ in
           cursor-style-blink = true;
           auto-update-channel = "tip";
           quick-terminal-position = "center";
+          app-notifications = "no-config-reload";
         };
       };
     };

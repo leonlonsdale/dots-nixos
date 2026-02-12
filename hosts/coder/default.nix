@@ -74,6 +74,7 @@
   modules.dev.cli.gh.enable = true;
   modules.dev.cli.lazygit.enable = true;
   modules.dev.editors.helix.enable = true;
+  modules.dev.editors.neovim.enable = true;
   modules.dev.languages.go.enable = true;
   modules.dev.languages.python.enable = true;
   modules.dev.languages.web.enable = true;
@@ -85,10 +86,10 @@
   modules.dev.languages.nix.enable = true;
 
   ##### Terminal
-  modules.terminals.foot.enable = true;
-  modules.terminals.foot.setAsDefault = true;
-  modules.terminals.foot.theme = "nord";
-  modules.terminals.foot.font = "comic-shanns";
+  modules.terminals.ghostty.enable = true;
+  modules.terminals.ghostty.setAsDefault = true;
+  modules.terminals.ghostty.theme = "Nord";
+  modules.terminals.ghostty.font = "jetbrains";
 
   ##### Applications
   modules.programs.browsers.firefox.enable = true;
