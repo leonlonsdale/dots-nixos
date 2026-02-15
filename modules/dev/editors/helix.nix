@@ -22,7 +22,7 @@ in
         defaultEditor = true;
 
         settings = {
-          theme = "nord";
+          theme = "tokyonight_storm";
           editor = {
             true-color = true;
             undercurl = true;

@@ -43,6 +43,8 @@
   modules.appearance.fonts.victor.enable = true;
   modules.appearance.fonts.comic-sans.enable = true;
   modules.appearance.fonts.comic-shanns.enable = true;
+  modules.appearance.fonts.geist.enable = true;
+  modules.appearance.fonts.geistnf.enable = true;
   modules.appearance.desktops.niri.enable = true;
   modules.appearance.ui.dms.enable = true;
   modules.appearance.ui.dms.greeter.enable = true;
@@ -56,9 +58,9 @@
   modules.shell.fish.enable = true;
   modules.cli.zoxide.enable = true;
   modules.cli.starship.enable = true;
-  modules.cli.starship.palette = "nord";
+  modules.cli.starship.palette = "tokyonight";
   modules.cli.btop.enable = true;
-  modules.cli.btop.theme = "nord";
+  modules.cli.btop.theme = "tokyo_storm";
   modules.cli.bat.enable = true;
   modules.cli.eza.enable = true;
   modules.cli.fd.enable = true;
@@ -86,10 +88,10 @@
   modules.dev.languages.nix.enable = true;
 
   ##### Terminal
-  modules.terminals.ghostty.enable = true;
-  modules.terminals.ghostty.setAsDefault = true;
-  modules.terminals.ghostty.theme = "Nord";
-  modules.terminals.ghostty.font = "jetbrains";
+  modules.terminals.kitty.enable = true;
+  modules.terminals.kitty.setAsDefault = true;
+  modules.terminals.kitty.theme = "TokyoNight Storm";
+  modules.terminals.kitty.font = "geistnf";
 
   ##### Applications
   modules.programs.browsers.firefox.enable = true;

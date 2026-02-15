@@ -43,6 +43,14 @@ in
         prettyName = lib.mkDefault "ComicShannsMono Nerd Font";
         package = lib.mkDefault pkgs.nerd-fonts.comic-shanns-mono;
       };
+      geist = {
+        prettyName = lib.mkDefault "Geist";
+        package = lib.mkDefault pkgs.geist-font;
+      };
+      geistnf = {
+        prettyName = lib.mkDefault "GeistMono Nerd Font";
+        package = lib.mkDefault pkgs.nerd-fonts.geist-mono;
+      };
     };
 
     fonts.packages =

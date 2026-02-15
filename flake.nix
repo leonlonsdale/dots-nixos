@@ -24,6 +24,7 @@
     dms.inputs.nixpkgs.follows = "nixpkgs";
     wallpaper.url = "github:leonlonsdale/wallpaper";
     wallpaper.flake = false;
+    wrappers.url = "github:lassulus/wrappers";
   };
   outputs =
     inputs@{ self, flake-parts, ... }:
