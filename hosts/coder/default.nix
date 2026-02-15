@@ -90,7 +90,7 @@
   ##### Terminal
   modules.terminals.kitty.enable = true;
   modules.terminals.kitty.setAsDefault = true;
-  modules.terminals.kitty.theme = "TokyoNight Storm";
+  modules.terminals.kitty.theme = "tokyo_night_storm";
   modules.terminals.kitty.font = "geistnf";
 
   ##### Applications

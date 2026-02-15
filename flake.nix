@@ -10,7 +10,7 @@
   };
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-    catppuccin.url = "github:catppuccin/nix";
+    # catppuccin.url = "github:catppuccin/nix";
     flake-parts.url = "github:hercules-ci/flake-parts";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -25,13 +25,18 @@
     wallpaper.url = "github:leonlonsdale/wallpaper";
     wallpaper.flake = false;
     wrappers.url = "github:lassulus/wrappers";
+    import-tree.url = "github:vic/import-tree";
   };
   outputs =
     inputs@{ self, flake-parts, ... }:
     flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [ "x86_64-linux" ];
 
-      imports = [ ./parts/nixos.nix ];
+      # outputs = inputs: inputs.flake-parts.lib.mkFlake {inherit inputs;} (inputs.import-tree ./modules)
+
+      imports = [
+        ./parts/systems.nix
+        ./parts/nixos.nix
+      ];
 
       perSystem =
         { system, ... }:
